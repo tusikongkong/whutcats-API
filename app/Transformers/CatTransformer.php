@@ -9,6 +9,10 @@ class CatTransformer extends TransformerAbstract
 {
     public function transform(Cat $cat)
     {
+        $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ||
+            (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'))
+            ? 'https://' : 'http://';
+
         return [
             'id' => $cat->id,
             'name' => $cat->name,
@@ -21,8 +25,8 @@ class CatTransformer extends TransformerAbstract
             'charactor' => $cat->charactor,
             'show' => $cat->show,
             'campus' => $cat->campus,
-            'pic' => $_SERVER["HTTP_HOST"].'/upload/'.$cat->pic,
-            'head' => $_SERVER["HTTP_HOST"].'/upload/'.$cat->head,
+            'pic' => $http_type.$_SERVER["HTTP_HOST"].'/upload/'.$cat->pic,
+            'head' => $http_type.$_SERVER["HTTP_HOST"].'/upload/'.$cat->head,
         ];
     }
 }
