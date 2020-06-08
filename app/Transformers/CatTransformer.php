@@ -21,7 +21,8 @@ class CatTransformer extends TransformerAbstract
             'charactor' => $cat->charactor,
             'show' => $cat->show,
             'campus' => $cat->campus,
-            'pic' => 'http://whutcats.test/upload/'.$cat->pic
+            'pic' => $_SERVER["HTTP_HOST"].'/upload/'.$cat->pic,
+            'head' => $_SERVER["HTTP_HOST"].'/upload/'.$cat->head,
         ];
     }
 }

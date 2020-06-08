@@ -13,7 +13,7 @@ class ContactTransformer extends TransformerAbstract
             'id' => $contact->id,
             'title' => $contact->title,
             'content' => $contact->content,
-            'icon' => 'http://whutcats.test/upload/'.$contact->icon,
+            'icon' => $_SERVER["HTTP_HOST"].'/upload/'.$contact->icon,
         ];
     }
 }
