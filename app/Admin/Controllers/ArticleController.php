@@ -62,7 +62,7 @@ class ArticleController extends AdminController
         $form = new Form(new Article());
 
         $form->text('title', __('Title'));
-        $form->text('content', __('Content'));
+        $form->editor('content', __('Content'));
 
         return $form;
     }
